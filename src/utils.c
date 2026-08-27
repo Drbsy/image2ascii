@@ -1,28 +1,13 @@
 #include "utils.h"
 #include <stdio.h>
-#include "file_utils.h"
+#include <math.h>
+#include <string.h>
 
-bool are_args_valid(int argc, char *argv[])
+char pixel_to_ascii(RGBTRIPLE *pixel)
 {
-    if (argc != 2)
-    {
-        printf("Usage error: Invalid args.");
-        return false;
-    }
-    
-    char* fname = argv[1];
-    if (is_file_exists(fname) == false)
-    {
-        printf("Path error : Invalid file pathd \"%s\" ." , fname);
-        return false;
-    }
-
-    char *f_format = get_file_format(fname);
-    if (is_valid_format(f_format) == false)
-    {
-        printf("Invalid file format");
-        return false;
-    }
-
-    return true;
+    char *chars = " .:-=+#%@";
+    char chars_num = strlen(chars);
+    int pixel_brightness = round((pixel->red + pixel->green + pixel->blue) / 3.0);
+    int index = pixel_brightness * (chars_num -1) / 255;
+    return chars[index];
 }

@@ -1,8 +1,8 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#include <stdbool.h>
+#include "bmp.h"
 
-bool are_args_valid(int argc, char *argv[]);
+char pixel_to_ascii(RGBTRIPLE *pixel);
 
 #endif

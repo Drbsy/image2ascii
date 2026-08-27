@@ -1,6 +1,10 @@
 #include "bmp.h"
+#include "file_utils.h"
+#include "utils.h"
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
+
 
 void print_bmp_info(BMPFILEHEADER *file_header, BMPIMAGEHEADER *image_header)
 {
@@ -23,17 +27,80 @@ void print_bmp_info(BMPFILEHEADER *file_header, BMPIMAGEHEADER *image_header)
     return;
 }
 
-void grayscale(int height, int width, RGBTRIPLE image[height][width])
-{
-    for (int i = 0; i < height; i++)
+char *bmp2ascii( char *fname)
+{   
+    FILE *bmp_file = fopen(fname, "rb");
+    
+    if (bmp_file == NULL)
     {
-        for (int j = 0; j < width; j++)
-        {
-            int gray = round((image[i][j].red + image[i][j].green + image[i][j].blue) / 3.0);
-            image[i][j].blue = gray;
-            image[i][j].green = gray;
-            image[i][j].red = gray;
-        }
+        printf("Error : Cant read file");
+        return NULL;
     }
-    return;
+
+    BMPFILEHEADER file_header;
+    BMPIMAGEHEADER image_header;
+    
+    //reads bmp file header 
+    fread(&file_header, sizeof(file_header), 1, bmp_file);
+    //reads bmp image header
+    fread(&image_header, sizeof(image_header), 1, bmp_file);
+
+    //DEBUG : print bmp file headers info
+    print_bmp_info(&file_header, &image_header);
+
+    /*  cheak next BMP parametes:
+        bftype == "BM"
+        colorbit map == 24bit
+        bfOffBits == 54 (offset to start of pixel data)
+        biSize == 40 (header size)
+        biCompression == 0 (not compressed)
+    */
+    if (file_header.bfType != 0x4d42 || file_header.bfOffBits != 54 || image_header.biSize != 40 || image_header.biBitCount != 24 || image_header.biCompression != 0)
+    {
+        printf("Error: unsupported \"bmp\" file.\n"); 
+        return NULL;
+    }
+    
+    //export height/width from BMP image header
+    int height = (image_header.biHeight);
+    int width = image_header.biWidth;
+
+    //jump to pixel_data statrting position
+    fseek(bmp_file, file_header.bfOffBits, SEEK_SET);
+
+    //allocate ram for pixel data
+    RGBTRIPLE(*tmp_image)[width] = malloc(abs(height) * sizeof(*tmp_image));
+    if (tmp_image == NULL)
+    {
+        printf("Error : not enough memory to store image.");
+        return NULL;
+    }
+    
+    int padding = (4 - (width * sizeof(RGBTRIPLE)) % 4) % 4;    
+
+    //extract pixel data into tmp_image
+    for (int i = 0; i < abs(height); i++)
+    {
+        fread(tmp_image[i], sizeof(RGBTRIPLE), width, bmp_file);
+        fseek(bmp_file, padding, SEEK_CUR); 
+    }
+
+    char *ascii_return = malloc(abs(height) * width * sizeof(char) + abs(height));
+    
+    //transfrom pixel val into ascii char
+    for (size_t i = height; i > 0; i--)
+    {
+        for (size_t j = 0; j < (size_t)(width); j ++)
+        {
+            size_t index = (j) + ((height-i)*width) + 1;
+            ascii_return[index] = pixel_to_ascii(&tmp_image[i][j]);
+        }
+        size_t new_line_index = ((height-i)*width) + 1;
+        ascii_return[new_line_index] = '\n';
+    }
+    
+    fclose(bmp_file);
+    free(tmp_image);
+    return  ascii_return;
 }
+ 

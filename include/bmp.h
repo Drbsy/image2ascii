@@ -2,6 +2,7 @@
 #define BMP_H
 
 #include <stdint.h>
+#include <stdio.h>
 
 #pragma pack(push, 1)
 
@@ -17,7 +18,7 @@ typedef struct
 typedef struct  
 {
     int32_t biSize;
-    int32_t biWidth;
+    int32_t biWidth;       
     int32_t biHeight;
     int16_t biPlanes;
     int16_t biBitCount;
@@ -39,6 +40,6 @@ typedef struct
 #pragma pack(pop)
 
 void print_bmp_info(BMPFILEHEADER *file_header, BMPIMAGEHEADER *image_header);
-void grayscale(int height, int width, RGBTRIPLE image[height][width]);
+char *bmp2ascii( char *fname);
 
 #endif
