@@ -56,7 +56,6 @@ char *get_file_format(char* fname)
                 return NULL;
             }
             buffer = tmp;
-            current_size += BUFFER_SIZE;
         }
         buffer[current_len++] = fname[i - 1];
     }
@@ -68,9 +67,15 @@ char *get_file_format(char* fname)
 
 void rev_string(char* string)
 {
+    if (string == NULL) return;
+
+    size_t len = strlen(string);
+    if (len == 0) return;
+
     size_t left = 0;
-    size_t right = strlen(string) -1;
+    size_t right = len - 1;
     char tmp;
+    
     while (left < right)
     {
         tmp = string[left];
