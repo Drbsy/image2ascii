@@ -16,7 +16,14 @@ This project turn bmp images into ascii art
 This project is an alpha version. It currently only supports uncompressed 24-bit .bmp files.
 
   
+  # Usage
+
   
+  
+
+    .\image2ascii.exe path_to_image
+
+
 
 ## art example
 
