@@ -40,6 +40,6 @@ typedef struct
 #pragma pack(pop)
 
 void print_bmp_info(BMPFILEHEADER *file_header, BMPIMAGEHEADER *image_header);
-char *bmp2ascii( char *fname);
+char *bmp2ascii(char *fname, size_t target_height, size_t target_width);
 
 #endif

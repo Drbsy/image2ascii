@@ -6,6 +6,10 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+
+#define TARGET_HEIGHT 128
+#define TARGET_WIDTH 128
+
 int main(int argc, char *argv[])
 {
     if (argc != 2)
@@ -29,15 +33,16 @@ int main(int argc, char *argv[])
     }
 
     
-    char *tmp = bmp2ascii( fname);
+    char *tmp = bmp2ascii(fname, TARGET_HEIGHT, TARGET_WIDTH);
     if (tmp == NULL)
     {
-        //TODO ERROR message
-        printf("Error : TODO");
+        printf("Error : faild to convert the bmp image.");
         return 4;
     }
     printf("%s", tmp);
 
+    free(f_format);
+    free(tmp);
     return 0;
 }
 
