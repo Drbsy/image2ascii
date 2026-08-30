@@ -5,7 +5,7 @@
 
 char pixel_to_ascii(RGBTRIPLE *pixel)
 {
-    char *chars = " .:-=+#%@";
+    const char *chars = " .:-=+#%@";
     char chars_num = strlen(chars);
     int pixel_brightness = get_pixel_brightness(pixel);
     int index = pixel_brightness * (chars_num -1) / 255;
