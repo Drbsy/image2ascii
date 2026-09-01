@@ -1,9 +1,6 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#include "bmp.h"
-
-char pixel_to_ascii(RGBTRIPLE *pixel);
-int get_pixel_brightness(RGBTRIPLE *pixel);
+char *image_2_ascii(const unsigned char *image,const int width,const int height,const int num_channel);
 
 #endif

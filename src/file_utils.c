@@ -12,7 +12,7 @@ bool is_file_exists(char* fname)
 
 bool is_valid_format(char* f_format)
 {
-    char* formats[] = {"bmp"};
+    char* formats[] = {"jpg", "jpeg", "png", "bmp", "tga", "psd", "hdr", "pic", "ppm", "pgm"};
     size_t formats_len = sizeof(formats) / sizeof(formats[0]); 
    
     if (f_format == NULL) 
