@@ -1,28 +1,72 @@
 
+
 # Image 2 ascii
 
   
 
-This project turn bmp images into ascii art
+This project any supported image format into ascii art 
+
+
+
+# Usage
 
   
-  
 
-# Important
-
-  
-  
-
-This project is an alpha version. It currently only supports uncompressed 24-bit .bmp files.
+Convert an image to ASCII art using:
 
   
-  # Usage
+
+```bash
+
+.\image2ascii.exe  <path_to_image>  <size>
+
+```
 
   
+
+### Size Options
+
   
 
-    .\image2ascii.exe path_to_image
+| Size | Flag | Scale Factor |
+|---|---|---|
+| Small | `-s` | `1/24` |
+| Medium | `-m` | `1/12` |
+| Large | `-l` | `1/6` |
+| Extra Large | `-xl` | `1/3` |
+| Extra Extra Large | `-xxl` | `1/1` |
 
+  
+
+### Help
+
+  
+
+To display the help message:
+
+  
+
+```bash
+
+.\image2ascii.exe  -h
+
+```
+
+  
+
+or:
+
+  
+
+```bash
+
+.\image2ascii.exe  -help
+
+```
+
+### Supported image formats
+
+    "jpg", "jpeg", "png", "bmp", "tga", "psd", "hdr", "pic", "ppm", "pgm"
 
 
 ## art example
