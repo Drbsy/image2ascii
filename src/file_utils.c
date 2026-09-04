@@ -42,6 +42,11 @@ char *get_file_format(char* fname)
     size_t current_len = 0;
     for (size_t i = fname_len; i > 0 ; i--)
     {
+        if (i - 1 == 0 && fname[i - 1] != '.')
+        {
+            free(buffer);
+            return NULL;
+        }
         if (fname[i - 1] == '.')
         {
             break;
