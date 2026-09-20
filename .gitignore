@@ -29,6 +29,7 @@
 *.dylib
 
 # Executables
+image2ascii
 *.exe
 *.out
 *.app

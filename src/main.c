@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     if (argc < 2 || argc > 4)
     {
         printf( "Usage error : Invalid args.\n"
-                "help        : %s -h or %s -help."
+                "help        : %s -h or %s -help.\n"
                 ,  executable_name, executable_name);
         return 1;
     }
@@ -109,7 +109,7 @@ int main(int argc, char *argv[])
     if (size_index == -1)
     {
         printf( "Input Error: Invalid size flag.\n"
-                "help        : %s -h or %s -help."
+                "help        : %s -h or %s -help.\n"
                 ,  executable_name, executable_name);
         image_free(image);
         return 6;
