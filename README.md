@@ -8,9 +8,7 @@ This project converts any supported image format into ASCII art.
 Convert an image to ASCII art using:
 
 ```bash
-
-./image2ascii  <path_to_image>  <size>
-
+./image2ascii <path_to_image> <size> [options]
 ```
 
 ### Size Options
@@ -24,22 +22,24 @@ Convert an image to ASCII art using:
 | Extra Extra Large | `-xxl` | `1/1` |
 | Custom Line Length | `-llen <size>` | Custom line length size |
 
+### Additional Options
+
+| Option | Flag | Description |
+|---|---|---|
+| Saliency Threshold | `-salience <val>` or `-sal <val>` | Applies a saliency filter with a custom threshold (e.g., `-sal 140`). |
+
 ### Help
 
 To display the help message:
 
 ```bash
-
-./image2ascii  -h
-
+./image2ascii -h
 ```
 
 or:
 
 ```bash
-
-./image2ascii  -help
-
+./image2ascii -help
 ```
 
 ### Supported Image Formats
@@ -55,51 +55,39 @@ or:
 **Arch Linux:**
 
 ```bash
-
-sudo  pacman  -S  --needed  base-devel  git  gcc  make
-
+sudo pacman -S --needed base-devel git gcc make
 ```
 
 **Debian / Ubuntu:**
 
 ```bash
-
-sudo  apt  update && sudo  apt  install  -y  git  gcc  make
-
+sudo apt update && sudo apt install -y git gcc make
 ```
 
 **Fedora:**
 
 ```bash
-
-sudo  dnf  install  -y  git  gcc  make
-
+sudo dnf install -y git gcc make
 ```
 
 ### 2. Clone the Repository
 
 ```bash
-
-git  clone  https://github.com/Drbsy/image2ascii.git
-
+git clone [https://github.com/Drbsy/image2ascii.git](https://github.com/Drbsy/image2ascii.git)
 ```
 
 ### 3. Navigate to Directory
 
-
 ```bash
-
-cd  image2ascii
-
+cd image2ascii
 ```
 
 ### 4. Compile
 
 ```bash
-
 make
-
 ```
+
 ---
 
 ## Art Examples
