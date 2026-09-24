@@ -73,7 +73,7 @@ sudo dnf install -y git gcc make
 ### 2. Clone the Repository
 
 ```bash
-git clone [https://github.com/Drbsy/image2ascii.git](https://github.com/Drbsy/image2ascii.git)
+git clone https://github.com/Drbsy/image2ascii.git
 ```
 
 ### 3. Navigate to Directory
