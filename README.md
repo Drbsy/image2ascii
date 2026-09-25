@@ -92,12 +92,10 @@ make
 
 ## Art Examples
 
-![Example 1](https://raw.githubusercontent.com/Drbsy/image2ascii/main/examples/images/1.jpeg)
+![Example 1](https://raw.githubusercontent.com/Drbsy/image2ascii/main/examples/images/2.jpeg)
 
-![Example 2](https://raw.githubusercontent.com/Drbsy/image2ascii/main/examples/images/2.jpeg)
+![Example 2](https://raw.githubusercontent.com/Drbsy/image2ascii/main/examples/images/3.jpeg)
 
-![Example 3](https://raw.githubusercontent.com/Drbsy/image2ascii/main/examples/images/3.jpeg)
+![Example 3](https://raw.githubusercontent.com/Drbsy/image2ascii/main/examples/images/4.jpeg)
 
-![Example 4](https://raw.githubusercontent.com/Drbsy/image2ascii/main/examples/images/4.jpeg)
-
-![Example 5](https://raw.githubusercontent.com/Drbsy/image2ascii/main/examples/images/5.jpeg)
+![Example 4](https://raw.githubusercontent.com/Drbsy/image2ascii/main/examples/images/5.jpeg)
